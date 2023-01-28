@@ -6,6 +6,10 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "cockroachdb"
   url      = env("DATABASE_URL")
+}
+
+model test {
+  a String @id
 }
