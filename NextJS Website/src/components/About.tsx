@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "@mantine/core";
 
+
 const About = () => {
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
   if (isLoading) {
@@ -44,6 +45,19 @@ const About = () => {
         during the fair. BoothBuddy allows you to view all the information you
         need without the need of paper flyers.
       </p>
+      <div className="flex flex-row justify-center mb-24">
+        {!isAuthenticated ? (
+          <Button
+            variant="gradient"
+            onClick={() => loginWithRedirect()}
+            gradient={{ from: "indigo", to: "cyan" }}
+          >
+            Create Your First Booth
+          </Button>
+        ) : (
+          <></>
+        )}
+      </div>
       <div className="flex flex-row justify-center mb-24">
         {!isAuthenticated ? (
           <Button
