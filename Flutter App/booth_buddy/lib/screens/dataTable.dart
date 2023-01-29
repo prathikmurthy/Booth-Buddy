@@ -7,6 +7,8 @@ class dataTableApp extends StatelessWidget {
   const dataTableApp({super.key});
 
   static const String _title = 'Hi! Here are your visited events!';
+  //center the title
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class MyStatelessWidget extends StatelessWidget {
     List<DataRow> dataRows = [];
     for (var data in dataSet) {
       List<String> splitData = data.split(';');
+      processedCodes.add(splitData[1]);
       dataRows.add(
         DataRow(
           cells: <DataCell>[

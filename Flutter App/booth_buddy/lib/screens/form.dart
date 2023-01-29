@@ -1,5 +1,6 @@
 import 'dart:html';
 
+import 'package:booth_buddy/screens/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -166,16 +167,20 @@ class form extends StatelessWidget {
                       majorController.text.isNotEmpty &&
                       yearController.text.isNotEmpty &&
                       phoneController.text.isNotEmpty) {
-                    var map = new Map<String, dynamic>();
-                    map['name'] = nameController.text;
-                    map["email"] = emailController.text;
-                    map["major"] = majorController.text;
-                    map["year"] = yearController.text;
-                    map["phone"] = phoneController.text;
-                    final response = await http.post(
-                      Uri.parse('https://buddy.free.beeceptor.com'),
-                      body: map,
-                    );
+                    for (String i in processedCodes.toSet().toList()) {
+                      var map = new Map<String, dynamic>();
+                      print(i);
+                      map['id'] = i;
+                      map['name'] = nameController.text;
+                      map["email"] = emailController.text;
+                      map["major"] = majorController.text;
+                      map["year"] = yearController.text;
+                      map["phone"] = phoneController.text;
+                      final response = await http.post(
+                        Uri.parse('https://buddy.free.beeceptor.com'),
+                        body: map,
+                      );
+                    }
                     showAlertDialog(context);
                   } else {
                     print("Error");
