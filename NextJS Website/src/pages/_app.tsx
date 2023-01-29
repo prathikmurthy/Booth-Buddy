@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     domain="dev-cn0o5dghcju3motq.us.auth0.com"
     clientId="pKPmTluxRUVSPTXRdHPrEAsMZmhdaYex"
     authorizationParams={{
-      redirect_uri: "http://localhost:3001"
+      redirect_uri: "http://localhost:3000/boothmanager"
     }} >
     <Component {...pageProps} />
     </Auth0Provider></MantineProvider> 
