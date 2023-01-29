@@ -10,20 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Event {
-  eventID     String     @id @unique
-  name        String
-  description String
-  active      Boolean
-  Room        Room[]
-  room_data   RoomData[]
-}
-
 // Table of all created rooms (active and inactive)
 model Room {
   roomID      String     @id @unique
-  event       Event      @relation(fields: [eventID], references: [eventID])
-  eventID     String
   roomAdmin   String
   RoomAdmin   RoomAdmin  @relation(fields: [roomAdmin], references: [userID])
   room_data   RoomData[]
@@ -32,28 +21,23 @@ model Room {
   active      Boolean
 }
 
+// Auth0 User
 model RoomAdmin {
   userID String @id @unique
   Room   Room[]
   name   String
 }
 
+// Uploaded contact card information for a room
 model RoomData {
   id      Int    @id @unique @default(sequence()) //dont use this field
-  event   Event  @relation(fields: [eventID], references: [eventID])
-  eventID String
   room    Room   @relation(fields: [roomID], references: [roomID])
   roomID  String
-  data SavedContactCard
+  name  String
+  email String
+  phone String
 }
 
-model SavedContactCard {
-
-}
-
-model ScanUser {
-  id String 
-}
 
 // model UserRoom {
 
