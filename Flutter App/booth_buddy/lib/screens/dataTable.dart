@@ -7,6 +7,8 @@ class dataTableApp extends StatelessWidget {
   const dataTableApp({super.key});
 
   static const String _title = 'Hi! Here are your visited events!';
+  //center the title
+
 
   @override
   Widget build(BuildContext context) {
