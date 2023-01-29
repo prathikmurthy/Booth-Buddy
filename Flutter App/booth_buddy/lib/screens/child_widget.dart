@@ -8,6 +8,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ChildWidget extends StatelessWidget {
   final AvailableNumber number;
+  //create global variable "data"
 
   const ChildWidget({Key? key, required this.number}) : super(key: key);
   @override
@@ -24,7 +25,7 @@ class ChildWidget extends StatelessWidget {
       return Container(
         height: 100,
         width: 100,
-        child: MyHome(),
+        child: QRViewExample(),
       );
     } else if (number == AvailableNumber.Second) {
       return Container(

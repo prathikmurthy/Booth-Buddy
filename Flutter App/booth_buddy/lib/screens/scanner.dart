@@ -13,7 +13,7 @@ class MyHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Flutter Demo Home Page')),
       body: Center(
-        child: QRViewExample(),
+        child: const QRViewExample(),
       ),
     );
   }
