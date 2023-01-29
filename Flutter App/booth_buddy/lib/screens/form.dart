@@ -61,10 +61,13 @@ class form extends StatelessWidget {
               child: ListView(children: [
                 TextFormField(
                   controller: nameController,
+                  //change radius of the border
                   decoration: InputDecoration(
                     labelText: "Name",
                     prefixIcon: Icon(Icons.account_circle),
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
                   ),
                 ),
                 SizedBox(height: 10.0),
@@ -73,7 +76,9 @@ class form extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Email",
                       prefixIcon: Icon(Icons.email_outlined),
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
                     )),
                 SizedBox(height: 10.0),
                 TextFormField(
@@ -81,7 +86,9 @@ class form extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Major",
                       prefixIcon: Icon(Icons.school_outlined),
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
                     )),
                 SizedBox(height: 10.0),
                 TextFormField(
@@ -89,7 +96,9 @@ class form extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "School Year",
                       prefixIcon: Icon(Icons.calendar_today),
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
                     )),
                 SizedBox(height: 10.0),
                 TextFormField(
@@ -97,7 +106,9 @@ class form extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Phone Number",
                       prefixIcon: Icon(Icons.phone),
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
                     )),
                 SizedBox(height: 15.0),
                 ElevatedButton(

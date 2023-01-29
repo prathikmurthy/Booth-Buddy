@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:booth_buddy/screens/globals.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -23,10 +24,10 @@ class QRViewExample extends StatefulWidget {
   const QRViewExample({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _QRViewExampleState();
+  State<StatefulWidget> createState() => QRViewExampleState();
 }
 
-class _QRViewExampleState extends State<QRViewExample> {
+class QRViewExampleState extends State<QRViewExample> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -63,41 +64,41 @@ class _QRViewExampleState extends State<QRViewExample> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
-                              },
-                            )),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.flipCamera();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getCameraInfo(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return Text(
-                                      'Camera facing ${describeEnum(snapshot.data!)}');
-                                } else {
-                                  return const Text('loading');
-                                }
-                              },
-                            )),
-                      )
-                    ],
+                    // children: <Widget>[
+                    //   Container(
+                    //     margin: const EdgeInsets.all(8),
+                    //     child: ElevatedButton(
+                    //         onPressed: () async {
+                    //           await controller?.toggleFlash();
+                    //           setState(() {});
+                    //         },
+                    //         child: FutureBuilder(
+                    //           future: controller?.getFlashStatus(),
+                    //           builder: (context, snapshot) {
+                    //             return Text('Flash: ${snapshot.data}');
+                    //           },
+                    //         )),
+                    //   ),
+                    //   Container(
+                    //     margin: const EdgeInsets.all(8),
+                    //     child: ElevatedButton(
+                    //         onPressed: () async {
+                    //           await controller?.flipCamera();
+                    //           setState(() {});
+                    //         },
+                    //         child: FutureBuilder(
+                    //           future: controller?.getCameraInfo(),
+                    //           builder: (context, snapshot) {
+                    //             if (snapshot.data != null) {
+                    //               return Text(
+                    //                   'Camera facing ${describeEnum(snapshot.data!)}');
+                    //             } else {
+                    //               return const Text('loading');
+                    //             }
+                    //           },
+                    //         )),
+                    //   )
+                    // ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -162,6 +163,10 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+        if (result != null) {
+          scannedCodes.add(result!.code.toString());
+          print(result!.code.toString());
+        }
       });
     });
   }
