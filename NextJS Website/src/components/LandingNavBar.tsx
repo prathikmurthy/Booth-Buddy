@@ -1,11 +1,13 @@
 import { Button } from "@mantine/core";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { debounce } from "../utilities/debounce";
 
 const LandingNavBar = () => {
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
+  const router = useRouter();
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -17,12 +19,14 @@ const LandingNavBar = () => {
             <Button
               variant="gradient"
               gradient={{ from: "indigo", to: "cyan" }}
-            >
+              onClick={()=>router.push('/boothmanager')}
+              >
               +
             </Button>
             <Button
               variant="gradient"
               gradient={{ from: "indigo", to: "cyan" }}
+              onClick={()=>router.push('/boothmanager')}
             >
               My Rooms
             </Button>
