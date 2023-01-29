@@ -10,6 +10,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model test {
-  a String @id
+// Table of all created rooms (active and inactive)
+model Room {
+  roomID      Int        @id @unique @default(sequence())
+  roomAdmin   String
+  // RoomAdmin   RoomAdmin  @relation(fields: [roomAdmin], references: [userID])
+  room_data   RoomData[]
+  name        String
+  description String
+  active      Boolean
+  event       String
+  flyer       String
+  website     String
+  color String
 }
+
+// // Auth0 User
+// model RoomAdmin {
+//   userID String @id @unique
+//   Room   Room[]
+//   name   String
+// }
+
+// Uploaded contact card information for a room
+model RoomData {
+  id     Int    @id @unique @default(sequence()) //dont use this field
+  room   Room   @relation(fields: [roomID], references: [roomID])
+  roomID Int
+  name   String
+  email  String
+  phone  String
+}
+
+// model UserRoom {
+
+// }
