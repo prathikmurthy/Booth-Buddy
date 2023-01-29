@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Section from '../components/Section'
+import Section from '../components/Landing'
 import { Inter } from '@next/font/google'
+import LandingNavBar from '@/components/LandingNavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/* <LandingNavBar /> */}
       <Section title="Section 1" description="This is a description" />
+      {/* <Section title="Section 1" description="This is a description" /> */}
+      {/* <Section title="Section 1" description="This is a description" /> */}
       
       
 

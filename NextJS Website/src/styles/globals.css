@@ -4,6 +4,9 @@
 
 :root {
   background-color: #121212;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./bg.jpeg");
+  /* background: rgba(0, 0, 0, 1) */
+  /* background-size: cover; */
 }
 
 /* :root {
