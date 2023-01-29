@@ -42,7 +42,7 @@ const Profile = () => {
 };
 
 
-export default function Section(props: any) {
+export default function Landing(props: any) {
   // const { isAuthenticated } = useAuth0();
 
 
