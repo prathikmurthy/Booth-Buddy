@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const About = () => {
   return (
     <div className="text-white container mx-auto py-4 h-full">
@@ -6,6 +8,10 @@ const About = () => {
         Created with sustainability in mind, BoothBuddy is a platform for
         sharing club and recruiter information without the need of paper flyers.
       </p>
+      <div className="relative">
+
+      <div className="absolute -top-24 left-0"><Image src={"/../public/cart.gif"} height={500} width={550} alt="a" /></div>
+      </div>
       <div className="flex flex-col items-end text-right">
         <h1 className="text-6xl font-bold pb-3 mb-5 px-5">
           Why Was BoothBuddy Created?
@@ -16,6 +22,10 @@ const About = () => {
           reception during the fair. BoothBuddy allows you to view all the
           information you need without the need of paper flyers.
         </p>
+        <div className="relative w-96">
+
+          <div className="absolute -top-36 right-"><Image src={"/../public/stand2.gif"} height={400} width={400} alt="a" /></div>
+        </div>
       </div>
       <h1 className="text-6xl font-bold pb-3 mb-5  px-5">
         How Does BoothBuddy Work?

@@ -39,6 +39,9 @@ export default function App() {
   }
   
   const [opened, setOpened] = useState(false);
+
+  const [modalOpen, setModalOpen] = useState(false);
+
   const [name, setName] = useState("");
   const [event, setEvent] = useState("");
   const [desc, setDesc] = useState("");
@@ -150,8 +153,6 @@ export default function App() {
           </Button>
         </Drawer>
 
-
-
           <div className="absolute top-16 right-16">
             <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} onClick={() => logout({ logoutParams: { returnTo: "http://localhost:3000"}})}>Log Out<FiLogOut className="pl-4 text-4xl"/></Button>
           </div>
@@ -170,11 +171,11 @@ export default function App() {
               </h3>
               <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} onClick={() => setOpened(true)}>Create a Booth +</Button>
             </div>
-            {data.active.map((x) => { return <Booth name={x.name} description={x.desc} event={x.event} gradient={["#008836", x.color]} active={x.active}/>})}
+            {data.active.map((x) => { return <Booth name={x.name} description={x.description} event={x.event} gradient={["#008836", x.color]} active={x.active} roomid={x.roomID}/>})}
             <h3 className="text-xl mt-4 pb-1 font-bold text-left opacity-60">
               {data.inactive.length} Inactive Booth(s)
             </h3>
-            {data.inactive.map((x) => { return <Booth name={x.name} description={x.desc} event={x.event} gradient={["#008836", x.color]} active={x.active} /> })}
+            {data.inactive.map((x) => { return <Booth name={x.name} description={x.description} event={x.event} gradient={["#008836", x.color]} active={x.active} roomid={x.roomID}/> })}
           </div>
         </div>
       </div>
