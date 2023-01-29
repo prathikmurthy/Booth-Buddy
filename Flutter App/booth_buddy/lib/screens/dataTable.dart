@@ -34,6 +34,7 @@ class MyStatelessWidget extends StatelessWidget {
     List<DataRow> dataRows = [];
     for (var data in dataSet) {
       List<String> splitData = data.split(';');
+      processedCodes.add(splitData[1]);
       dataRows.add(
         DataRow(
           cells: <DataCell>[

@@ -2,6 +2,8 @@
 Set<String> scannedCodes = {};
 
 //create function called addToScannedCodes
-void addToScannedCodes (String code) {
+void addToScannedCodes(String code) {
   scannedCodes.add(code);
 }
+
+List<String> processedCodes = [];
