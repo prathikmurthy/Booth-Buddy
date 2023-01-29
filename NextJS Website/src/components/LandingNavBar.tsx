@@ -10,7 +10,7 @@ const LandingNavBar = () => {
     return <div>Loading...</div>;
   }
   return (
-    <nav className="sticky top-0 h-16 w-full bg-transparent flex items-center justify-end mx-auto ">
+    <nav className="top-0 h-16 w-full bg-transparent flex items-center justify-end mx-auto ">
       <div className="flex flex-row justify-end space-x-5 mx-20 my-5">
         {isAuthenticated ? (
           <>
