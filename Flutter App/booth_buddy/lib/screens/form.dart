@@ -46,7 +46,7 @@ class form extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Form Styling Demo';
+    const appTitle = 'Interest Form';
     //final formKey = GlobalKey<FormState>();
     return SafeArea(
         child: Scaffold(
