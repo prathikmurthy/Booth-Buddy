@@ -1,14 +1,15 @@
+import 'package:booth_buddy/screens/scanner.dart';
 import 'package:flutter/material.dart';
-import 'package:booth_buddy/screens/page1.dart';
+//import 'package:booth_buddy/screens/page1.dart';
 import 'package:booth_buddy/screens/page2.dart';
 import 'package:booth_buddy/screens/page3.dart';
-import 'package:booth_buddy/Screens/form.dart';
+import 'package:booth_buddy/screens/form.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ChildWidget extends StatelessWidget {
   final AvailableNumber number;
 
   const ChildWidget({Key? key, required this.number}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     String file = "";
@@ -21,9 +22,9 @@ class ChildWidget extends StatelessWidget {
     }
     if (number == AvailableNumber.First) {
       return Container(
-        height: 500,
-        width: 300,
-        child: Page1(),
+        height: 100,
+        width: 100,
+        child: MyHome(),
       );
     } else if (number == AvailableNumber.Second) {
       return Container(

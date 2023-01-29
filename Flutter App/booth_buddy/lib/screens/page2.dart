@@ -5,7 +5,15 @@ import 'package:flutter/material.dart';
 class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text("Screen 2", style: TextStyle(fontSize: 36.0));
+    return SafeArea(
+        child: Scaffold(
+      appBar: AppBar(
+        title: Text("Page 2"),
+      ),
+      body: Center(
+        child: Text("Hello World"),
+      ),
+    ));
   }
 }
 
