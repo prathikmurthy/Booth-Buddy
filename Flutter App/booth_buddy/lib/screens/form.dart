@@ -169,7 +169,7 @@ class form extends StatelessWidget {
                       phoneController.text.isNotEmpty) {
                     for (String i in processedCodes.toSet().toList()) {
                       var map = new Map<String, dynamic>();
-                      print(i);
+                      //print(i);
                       map['roomid'] = i;
                       map['name'] = nameController.text;
                       map["email"] = emailController.text;
@@ -177,7 +177,8 @@ class form extends StatelessWidget {
                       map["year"] = yearController.text;
                       map["phone"] = phoneController.text;
                       final response = await http.post(
-                        Uri.parse('https://blahh.free.beeceptor.com'),
+                        Uri.parse(
+                            'https://booth-buddy.vercel.app/api/CreateRoomCard'),
                         body: map,
                       );
                     }
