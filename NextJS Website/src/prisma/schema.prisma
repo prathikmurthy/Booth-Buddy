@@ -20,6 +20,9 @@ model Room {
   description String
   active      Boolean
   event       String
+  flyer       String
+  website     String
+  color String
 }
 
 // // Auth0 User

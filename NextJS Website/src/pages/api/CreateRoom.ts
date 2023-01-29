@@ -5,27 +5,47 @@ const prisma = new PrismaClient()
 
 
 type Data = {
-    name: string
-}
-
-type Body = {
     name: string,
-    description: string,
     event: string,
-    flyer: string,
+    desc: string,
+    url: string,
     website: string,
+    active: boolean,
+    color: string,
+    roomAdmin: string,
 }
 
-export default function handler(
+type Out = {
+    data: string
+}
+
+export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse<Out>
 ) {
 
-    
+
+    const body: Data = req.body;
 
     
+    const user = await prisma.room.create({
+        data: {
+            name: body.name,
+            event: body.event,
+            description: body.desc,
+            flyer: body.url,
+            website: body.website,
+            active: body.active,
+            color: body.color,
+            roomAdmin: body.roomAdmin
+        }
+    })
 
 
 
-    // res.status(200).json({ name: 'John Doe' }) 
+    
+
+
+
+    res.status(200).json({ data: 'John Doe' }) 
 }

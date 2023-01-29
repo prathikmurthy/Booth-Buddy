@@ -1,17 +1,20 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
+import Router from 'next/router'
 
-const LoginButton = () => {
-    const { loginWithRedirect } = useAuth0();
 
-    return <button onClick={() => loginWithRedirect()}>Log In</button>;
-};
 
 
 const a = () => {
+    useEffect(() => {
+
+        
+
+    }, [])
+
+
     return (
-        <div className="text-white">
-            <LoginButton />
-        </div>
+        <></>
     )
 }
 

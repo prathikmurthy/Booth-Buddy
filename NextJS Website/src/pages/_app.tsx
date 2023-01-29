@@ -9,7 +9,7 @@ const myCache = createEmotionCache({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <MantineProvider emotionCache={myCache}><Auth0Provider
+  return <MantineProvider emotionCache={myCache} theme={{ colorScheme: "dark"}}><Auth0Provider
 
     domain="dev-cn0o5dghcju3motq.us.auth0.com"
     clientId="pKPmTluxRUVSPTXRdHPrEAsMZmhdaYex"

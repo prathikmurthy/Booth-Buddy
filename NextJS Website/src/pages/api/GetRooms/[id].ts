@@ -5,7 +5,8 @@ const prisma = new PrismaClient()
 
 
 type Data = {
-    name: string
+    active: any[],
+    inactive: any[]
 }
 
 export default async function handler(
@@ -15,12 +16,27 @@ export default async function handler(
 
     const { id } = req.query
 
-    const data = await prisma.room.findMany({
+    console.log(id)
+
+    const active = await prisma.room.findMany({
         where: {
             //@ts-ignore
-            roomAdmin: id
+            roomAdmin: id,
+            active: true
         }
     })
+
+    const inactive = await prisma.room.findMany({
+        where: {
+            //@ts-ignore
+            roomAdmin: id,
+            active: false
+        }
+    })
+
+    // console.log(data)
+
+    res.status(200).json({active, inactive})
 
 
     // res.status(200).json({ name: 'John Doe' })
