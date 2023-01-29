@@ -61,7 +61,7 @@ export default function Landing(props: any) {
           <Image src={"/../public/stand.gif"} width={300} height={300} alt="a" className="mx-auto"/>
         </motion.div>
         <motion.h1 className="text-7xl font-extrabold text-slate-100" animate={{ y: 0, opacity: 1 }} initial={{ y: -50, opacity: 0 }} transition={{ duration: 1, delay: 1 }}>
-          Booth<span className="text-main-accent">Buddy</span>
+          Booth<span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-teal-400">Buddy</span>
         </motion.h1>
         <motion.h1 className="text-4xl antialiased text-slate-400 pt-4 tracking-wide" animate={{ y: 0, opacity: 1 }} initial={{ y: -20, opacity: 0 }} transition={{ duration: 1, delay: 2.5 }}>
           Saving flyers, one page at a time.
