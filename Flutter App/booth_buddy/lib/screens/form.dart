@@ -54,7 +54,7 @@ class form extends StatelessWidget {
       appBar: AppBar(
         title: const Text(appTitle),
         //change the text color
-        foregroundColor: Colors.black,
+        foregroundColor: Color.fromARGB(255, 255, 255, 255),
         // change the font
         //fontFamily: 'Roboto',
       ),
@@ -170,14 +170,14 @@ class form extends StatelessWidget {
                     for (String i in processedCodes.toSet().toList()) {
                       var map = new Map<String, dynamic>();
                       print(i);
-                      map['id'] = i;
+                      map['roomid'] = i;
                       map['name'] = nameController.text;
                       map["email"] = emailController.text;
                       map["major"] = majorController.text;
                       map["year"] = yearController.text;
                       map["phone"] = phoneController.text;
                       final response = await http.post(
-                        Uri.parse('https://buddy.free.beeceptor.com'),
+                        Uri.parse('https://blahh.free.beeceptor.com'),
                         body: map,
                       );
                     }
