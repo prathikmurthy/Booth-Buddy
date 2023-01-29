@@ -164,7 +164,7 @@ class QRViewExampleState extends State<QRViewExample> {
       setState(() {
         result = scanData;
         if (result != null) {
-          scannedCodes.add(result!.code.toString());
+          scannedCodes.add(result!.code.toString().substring(13));
           print(result!.code.toString());
         }
       });

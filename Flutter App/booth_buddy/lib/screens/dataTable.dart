@@ -64,7 +64,7 @@ class MyStatelessWidget extends StatelessWidget {
       // center columns
       headingRowHeight: 70,
       dataRowHeight: 70,
-      horizontalMargin: (MediaQuery.of(context).size.width - 10) / 5,
+      horizontalMargin: 40,
       columnSpacing: (MediaQuery.of(context).size.width - 30) / 5,
       columns: const <DataColumn>[
         DataColumn(
