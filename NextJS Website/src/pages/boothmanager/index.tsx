@@ -3,41 +3,43 @@ import Image from "next/image";
 import Booth from "../../components/Booth";
 import { Inter } from "@next/font/google";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Button, Drawer, TextInput, Textarea, Switch, ColorInput } from "@mantine/core";
+import {
+  Button,
+  Drawer,
+  TextInput,
+  Textarea,
+  Switch,
+  ColorInput,
+} from "@mantine/core";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FiDatabase, FiLogOut } from "react-icons/fi";
 import { GoCloudUpload } from "react-icons/go";
 import axios from "axios";
-import useSWR from 'swr'
+import useSWR from "swr";
 import { useEffect, useState } from "react";
-import { Modal } from '@mantine/core';
-
+import { Modal } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 type Data = {
-  active: any[],
-  inactive: any[]
-}
-
+  active: any[];
+  inactive: any[];
+};
 
 export default function App() {
-
-  
   // const fetcher = (...args: any[]) => fetch(...args).then(res => res.json())
 
-  
-  const {isAuthenticated, user, isLoading, loginWithRedirect, logout} = useAuth0();
-  
-  if (isLoading) return <div>loading...</div>
-  
-  
+  const { isAuthenticated, user, isLoading, loginWithRedirect, logout } =
+    useAuth0();
+
+  if (isLoading) return <div>loading...</div>;
+
   if (!isAuthenticated) {
     loginWithRedirect();
   }
-  
+
   const [opened, setOpened] = useState(false);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -50,15 +52,12 @@ export default function App() {
   const [active, setActive] = useState(true);
   const [color, setColor] = useState("#FFFFFF");
 
+  const { data, error, mutate }: { data: Data; error: any; mutate: any } =
+    useSWR("/api/GetRooms/" + user?.sub, fetcher);
 
-  const {data, error, mutate}: {data: Data, error: any, mutate: any} = useSWR("/api/GetRooms/" + user?.sub, fetcher);
-  
-  if (!data) return <div className="text-white">Loading...</div>
-  
-  
-  console.log(data)
-  
+  if (!data) return <div className="text-white">Loading...</div>;
 
+  console.log(data);
 
   let rmProps = {
     name: "SASE",
@@ -69,30 +68,41 @@ export default function App() {
   };
 
   async function pushNewBooth() {
-    
-    await axios.post('/api/CreateRoom', {
-      name: name,
-      event: event,
-      desc: desc,
-      url: url,
-      website: website,
-      active: active,
-      color: color,
-      roomAdmin: user?.sub
-    }).then((response) => {
-      console.log(response)
-      mutate()
-      setOpened(false)
-    })
-
+    await axios
+      .post("/api/CreateRoom", {
+        name: name,
+        event: event,
+        desc: desc,
+        url: url,
+        website: website,
+        active: active,
+        color: color,
+        roomAdmin: user?.sub,
+      })
+      .then((response) => {
+        console.log(response);
+        mutate();
+        setOpened(false);
+      });
   }
 
   return (
     <>
       <div className="container mx-auto py-4">
-
-        <Drawer opened={opened} onClose={() => setOpened(false)} title="Create a new Booth" padding={"xl"} size="xl" position="right" overlayOpacity={0.55} 
-          overlayBlur={3} styles={{ drawer: { backgroundColor: "#121212"}, title: { color: "white", fontSize: "24px", }}}>
+        <Drawer
+          opened={opened}
+          onClose={() => setOpened(false)}
+          title="Create a new Booth"
+          padding={"xl"}
+          size="xl"
+          position="right"
+          overlayOpacity={0.55}
+          overlayBlur={3}
+          styles={{
+            drawer: { backgroundColor: "#121212" },
+            title: { color: "white", fontSize: "24px" },
+          }}
+        >
           <TextInput
             placeholder=""
             label="Booth Name"
@@ -116,7 +126,7 @@ export default function App() {
             value={desc}
             onChange={(event) => setDesc(event.currentTarget.value)}
           />
-          
+
           <br />
           <TextInput
             placeholder=""
@@ -148,34 +158,82 @@ export default function App() {
             onChange={(event) => setColor}
           /> */}
           <br />
-          <Button fullWidth leftIcon={<GoCloudUpload />} onClick={() => pushNewBooth()}>
+          <Button
+            fullWidth
+            leftIcon={<GoCloudUpload />}
+            onClick={() => pushNewBooth()}
+          >
             Create Booth
           </Button>
         </Drawer>
 
-          <div className="absolute top-16 right-16">
-            <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} onClick={() => logout({ logoutParams: { returnTo: "http://localhost:3000"}})}>Log Out<FiLogOut className="pl-4 text-4xl"/></Button>
-          </div>
+        <div className="absolute top-16 right-16">
+          <Button
+            variant="gradient"
+            gradient={{ from: "indigo", to: "cyan" }}
+            onClick={() =>
+              logout({ logoutParams: { returnTo: "http://localhost:3000" } })
+            }
+          >
+            Log Out
+            <FiLogOut className="pl-4 text-4xl" />
+          </Button>
+        </div>
 
         <div className="text-white text-center flex w-full flex-col mt-44">
-          <h1 className="text-5xl font-extrabold text-slate-200">Hi, <span className="text-main-accent">{user?.given_name}</span>!</h1>
+          <h1 className="text-5xl font-extrabold text-slate-200">
+            Hi, <span className="text-main-accent">{user?.given_name}</span>!
+          </h1>
           <h2 className="py-3 text-2xl font-bold antialiased text-[#9C9C9C] pb-12">
             Welcome to your Booths
           </h2>
-          <div>
-          </div>
+          <div></div>
           <div className="mx-auto flex flex-col w-[45%]">
             <div className="flex flex-row justify-between">
-              <h3 className="p-3 text-xl font-bold text-left opacity-60">
-                {data.active.length} Active Booth(s)
-              </h3>
-              <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} onClick={() => setOpened(true)}>Create a Booth +</Button>
+              {data.inactive.length ? (
+                <h3 className="p-3 text-xl font-bold text-left opacity-60">
+                  {data.active.length} Active Booth(s)
+                </h3>
+              ) : null}
+              <Button
+                variant="gradient"
+                gradient={{ from: "indigo", to: "cyan" }}
+                onClick={() => setOpened(true)}
+              >
+                Create a Booth +
+              </Button>
             </div>
-            {data.active.map((x) => { return <Booth name={x.name} description={x.description} event={x.event} gradient={["#008836", x.color]} active={x.active} roomid={x.roomID}/>})}
-            <h3 className="text-xl mt-4 pb-1 font-bold text-left opacity-60">
-              {data.inactive.length} Inactive Booth(s)
-            </h3>
-            {data.inactive.map((x) => { return <Booth name={x.name} description={x.description} event={x.event} gradient={["#008836", x.color]} active={x.active} roomid={x.roomID}/> })}
+            {data.active.map((x) => {
+              return (
+                <Booth
+                  name={x.name}
+                  description={x.description}
+                  event={x.event}
+                  gradient={["#008836", x.color]}
+                  active={x.active}
+                  roomid={x.roomID}
+                  key={x.roomID}
+                />
+              );
+            })}
+            {data.inactive.length ? (
+              <h3 className="text-xl mt-4 pb-1 font-bold text-left opacity-60">
+                {data.inactive.length} Inactive Booth(s)
+              </h3>
+            ) : null}
+            {data.inactive.map((x) => {
+              return (
+                <Booth
+                  name={x.name}
+                  description={x.description}
+                  event={x.event}
+                  gradient={["#008836", x.color]}
+                  active={x.active}
+                  roomid={x.roomID}
+                  key={x.roomID}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
