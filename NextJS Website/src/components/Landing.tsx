@@ -45,7 +45,6 @@ const Profile = () => {
 export default function Landing(props: any) {
   // const { isAuthenticated } = useAuth0();
 
-
   return (
     <section className="container h-screen w-screen flex mx-auto tracking-widest">
       {/* <div className="text-white text-3xl m-4"> */}
