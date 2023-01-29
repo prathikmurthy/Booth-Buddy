@@ -178,8 +178,18 @@ class form extends StatelessWidget {
                       map["phone"] = phoneController.text;
                       final response = await http.post(
                         Uri.parse(
-                            'https://booth-buddy.vercel.app/api/CreateRoomCard'),
-                        body: map,
+                            'https://booth-buddy.vercel.app/api/CreateRoomCard' +
+                                '?name=' +
+                                map['name'] +
+                                '&email=' +
+                                map['email'] +
+                                '&major' +
+                                map['major'] +
+                                '&year=' +
+                                map['year'] +
+                                '&phone=' +
+                                map['phone'] +
+                                '&roomid=17'),
                       );
                     }
                     showAlertDialog(context);
