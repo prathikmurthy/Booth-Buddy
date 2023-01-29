@@ -26,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.grey[500],
+        selectedItemColor: Color.fromARGB(255, 135, 135, 135),
+        unselectedItemColor: Color.fromARGB(255, 182, 181, 181),
         currentIndex: currentIndex,
         onTap: (value) {
           currentIndex = value;
