@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <LandingNavBar /> */}
+      <LandingNavBar />
       <Section title="Section 1" description="This is a description" />
       {/* <Section title="Section 1" description="This is a description" /> */}
       {/* <Section title="Section 1" description="This is a description" /> */}

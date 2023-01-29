@@ -43,20 +43,20 @@ const Profile = () => {
 
 
 export default function Section(props: any) {
-  const { isAuthenticated } = useAuth0();
+  // const { isAuthenticated } = useAuth0();
 
 
   return (
     <section className="container h-screen w-screen flex mx-auto tracking-widest">
-      <div className="text-white text-3xl m-4">
-        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+      {/* <div className="text-white text-3xl m-4"> */}
+        {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
         {/* <LoginButton />
         <LogoutButton /> */}
-        <div className="m-4">
+        {/* <div className="m-4">
         <Profile />
         </div>
-      </div>
-      <motion.div className="flex flex-col justify-center align-middle w-full text-center" >
+      </div> */}
+      <motion.div className="flex flex-col justify-center align-middle w-full text-center -mt-24" >
         <motion.div animate={{ y: 0, opacity: 1 }} initial={{ y: -30, opacity: 0 }} transition={{ duration: 1, delay: 3.5 }}>
           <Image src={"/../public/stand.gif"} width={300} height={300} alt="a" className="mx-auto"/>
         </motion.div>
