@@ -5,6 +5,7 @@ import 'package:booth_buddy/screens/page2.dart';
 import 'package:booth_buddy/screens/page3.dart';
 import 'package:booth_buddy/screens/form.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:booth_buddy/screens/dataTable.dart';
 
 class ChildWidget extends StatelessWidget {
   final AvailableNumber number;
@@ -13,14 +14,6 @@ class ChildWidget extends StatelessWidget {
   const ChildWidget({Key? key, required this.number}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    String file = "";
-    if (number == AvailableNumber.First) {
-      file = "first";
-    } else if (number == AvailableNumber.Second) {
-      file = "second";
-    } else if (number == AvailableNumber.Third) {
-      file = "third";
-    }
     if (number == AvailableNumber.First) {
       return Container(
         height: 100,
@@ -29,9 +22,10 @@ class ChildWidget extends StatelessWidget {
       );
     } else if (number == AvailableNumber.Second) {
       return Container(
+        alignment: Alignment.center,
         height: 500,
         width: 300,
-        child: Page2(),
+        child: dataTableApp(),
       );
     } else {
       return Container(

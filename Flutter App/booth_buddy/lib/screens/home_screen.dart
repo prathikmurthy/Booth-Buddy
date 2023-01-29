@@ -41,20 +41,23 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.qr_code_scanner,
+            ),
             //title: Text("First"),
-            label: "First",
+            label: "QR Scanner",
+
+            //change color of label
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.trending_up),
+            icon: Icon(Icons.history),
             //title: Text("Second"),
-            label: "Second",
+            label: "Visited",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            //title: Text("Third"),
-            label: "Third"
-          ),
+              icon: Icon(Icons.person),
+              //title: Text("Third"),
+              label: "Profile"),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.dashboard),
           //   //title: Text("Third"),
