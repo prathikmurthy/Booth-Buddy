@@ -22,7 +22,7 @@ const About = () => {
       <div className="absolute -top-24 left-0"><Image src={"/../public/cart.gif"} height={500} width={550} alt="a" /></div>
       </div>
       <div className="flex flex-col items-end text-right">
-        <h1 className="text-6xl font-bold pb-3 mb-5 px-5">
+        <h1 className="text-5xl font-bold pb-3 mb-5 px-5">
           Why Was BoothBuddy Created?
         </h1>
         <p className="text-lg w-[60%] mb-52  px-5">
@@ -45,19 +45,6 @@ const About = () => {
         during the fair. BoothBuddy allows you to view all the information you
         need without the need of paper flyers.
       </p>
-      <div className="flex flex-row justify-center mb-24">
-        {!isAuthenticated ? (
-          <Button
-            variant="gradient"
-            onClick={() => loginWithRedirect()}
-            gradient={{ from: "indigo", to: "cyan" }}
-          >
-            Create Your First Booth
-          </Button>
-        ) : (
-          <></>
-        )}
-      </div>
       <div className="flex flex-row justify-center mb-24">
         {!isAuthenticated ? (
           <Button
