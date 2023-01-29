@@ -28,7 +28,7 @@ export default function App() {
               <h3 className="p-3 text-xl font-bold text-left opacity-60">
                 1 Active Booth
               </h3>
-              <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>Indigo cyan</Button>
+              <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>Add Booth +</Button>
             </div>
             <Booth {...rmProps}></Booth>
             <Booth {...rmProps}></Booth>

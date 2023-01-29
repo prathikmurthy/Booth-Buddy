@@ -9,7 +9,8 @@ type BoothProps = {
 };
 const Booth = (props: BoothProps) => {
     let regClass = "text-left rounded-xl bg-gradient-to-r from-blue-500 to-slate-400 p-4";
-    let inactiveClass = "text-left rounded-xl bg-gradient-to-t from-white to-[#454545] p-4";
+    // let inactiveClass = "text-left rounded-xl bg-gradient-to-t from-white to-[#454545] p-4";
+    let inactiveClass = "text-left rounded-xl bg-[#454545] p-4";
 
   return (
     <motion.div className="py-2"
